@@ -11,7 +11,7 @@ $list = ['cat', 'dog', 'fish', 'fish'];
 
 function wordsCount($list){
     
-    return  array_reduce($list, function($acc, $item){
+    return  array_reduce($list, function($item, $acc){
         if(!array_key_exists($item, $acc))
             $acc[$item] = 1;
         else 
