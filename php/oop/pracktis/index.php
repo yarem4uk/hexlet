@@ -1,19 +1,24 @@
-<?php
+<?php 
 
-$arr = [2, 9, [1], [2, [4]]];
+$arr = [1, 2, [3], [4, [5, [6]]], 7];
+/* $b = [1, 2, [5], [6], 3, 4, 9]; */
 
-/* $iter = function($arr, $acc) { */
-/*     $item = array_shift($arr); */
-/*     if ($item === null) */
-/*         return $acc; */
-/*     if (!is_array($item)) */
-/*         $acc[] = $item; */
-/*     else */ 
-/*         return $iter($arr, $acc); */
-/* }; */
+function flatten ($arr) {
+    $iter = function ($item, $acc) use (&$iter) {
+        array_reduce($item, function ($acc, $el) use (&$acc, &$iter) {
 
+            if (is_array($el)) {
+                 $acc = $iter($el, $acc);
+            } else {
+            $acc[] = $el;
+            return $acc;
+            }
+        }, []);
 
-/* print_r($iter($arr, [])); */
-$ff = [];
-$k = array_shift($ff);
-print_r($k);
+        return $acc; 
+    };
+    return $iter($arr, []);
+}
+
+print_r(flatten($arr));
+/* print_r(flatten($b)); */
