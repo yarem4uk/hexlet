@@ -1,4 +1,5 @@
 proba*.*
 test.*
 composer.*
+*.swp
 vendor/
