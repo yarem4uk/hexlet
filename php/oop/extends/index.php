@@ -23,4 +23,5 @@ $div3 = new Div([],[$div4]);
 $div2 = new Div(['class' => 'row'], [$div, $div3]);
 
 /* echo $div->getName(); */
-echo $div2->toString();
+/* echo $div2->toString(); */
+echo $div->toString();

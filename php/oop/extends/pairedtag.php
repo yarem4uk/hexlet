@@ -15,13 +15,17 @@ class Pairedtag extends Tag
     }
     
     public function toString(){
-        $result = array_reduce($this->children, function($acc, $item){
-            /* var_dump($item->children); */
-            if (!empty($item->children))
-                $item->children->toString();
-            $item->toString();
-            return $acc;
-        },'');
-        return $result;
+        var_dump($this->children);
+        /* $iter = function ($item, $acc) use (&$iter) { */
+        /*     array_reduce($item, function ($acc, $el) use (&$acc, &$iter) { */
+        /*         if(is_object($el)) { */
+        /*             $acc = $iter($el, $acc); */
+        /*         } else { */
+        /*             $acc[] = $el; */
+        /*             return $acc; */
+        /*         } */ 
+        /*     }, []); */            
+        /* }; */
+        /* return $iter($this->children, []); */
     }
 }
