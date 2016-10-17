@@ -21,6 +21,6 @@ class SinglTag extends Tag
             return $acc;
             /* return array_keys($item); */
         }, '');
-        return $result . $str . '>';
+        return $result . $str . '/>';
     }
 }

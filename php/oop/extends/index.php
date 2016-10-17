@@ -6,6 +6,7 @@ require_once 'singltag.php';
 require_once 'pairedtag.php';
 require_once 'img.php';
 require_once 'div.php';
+require_once 'paragraph.php';
 
 /* $singltag = new SinglTag(1); */
 
@@ -17,11 +18,20 @@ require_once 'div.php';
 /* echo "\n"; */
 /* print_r( $img->getAttributes()); */
 
+/* $p = new Paragraph(); */
 $div = new Div();
+$div6 = new Div();
 $div4 = new Div();
 $div3 = new Div([],[$div4]);
-$div2 = new Div(['class' => 'row'], [$div, $div3]);
+$p = new Paragraph([], [$div, $div3]);
+$div5 = new Div([], [$p, $div3]);
+/* $div4 = new Div(); */
+/* $div3 = new Div([],[$div4]); */
+$div2 = new Div(['class' => 'row'], [$div, $div3, $div5]);
 
 /* echo $div->getName(); */
-/* echo $div2->toString(); */
 echo $div->toString();
+/* echo $div5->toString(); */
+/* echo $div2->toString(); */
+/* echo $p->toString(); */
+/* echo $p->getName(); */

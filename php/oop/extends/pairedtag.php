@@ -14,18 +14,13 @@ class Pairedtag extends Tag
         $this->children = $children;
     }
     
-    public function toString(){
-        var_dump($this->children);
-        /* $iter = function ($item, $acc) use (&$iter) { */
-        /*     array_reduce($item, function ($acc, $el) use (&$acc, &$iter) { */
-        /*         if(is_object($el)) { */
-        /*             $acc = $iter($el, $acc); */
-        /*         } else { */
-        /*             $acc[] = $el; */
-        /*             return $acc; */
-        /*         } */ 
-        /*     }, []); */            
-        /* }; */
-        /* return $iter($this->children, []); */
+    public function toString()
+    {
+
+        $iter = function($item, $acc) use (&$iter) {
+
+            var_dump($this);
+            return $iter($this, '');
+        };
     }
 }
