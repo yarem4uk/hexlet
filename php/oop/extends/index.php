@@ -30,7 +30,7 @@ $div5 = new Div([], [$p, $div3]);
 $div2 = new Div(['class' => 'row'], [$div, $div3, $div5]);
 
 /* echo $div->getName(); */
-echo $div->toString();
+echo $div3->toString();
 /* echo $div5->toString(); */
 /* echo $div2->toString(); */
 /* echo $p->toString(); */
