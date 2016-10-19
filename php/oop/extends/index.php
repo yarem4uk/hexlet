@@ -19,18 +19,18 @@ require_once 'paragraph.php';
 /* print_r( $img->getAttributes()); */
 
 /* $p = new Paragraph(); */
+$p = new Paragraph([], []);
 $div = new Div();
 $div6 = new Div();
 $div4 = new Div();
-$div3 = new Div([],[$div4]);
-$p = new Paragraph([], [$div, $div3]);
+$div3 = new Div([],[$div4, $div4]);
 $div5 = new Div([], [$p, $div3]);
 /* $div4 = new Div(); */
 /* $div3 = new Div([],[$div4]); */
 $div2 = new Div(['class' => 'row'], [$div, $div3, $div5]);
 
 /* echo $div->getName(); */
-echo $div3->toString();
+echo $div5->toString();
 /* echo $div5->toString(); */
 /* echo $div2->toString(); */
 /* echo $p->toString(); */
