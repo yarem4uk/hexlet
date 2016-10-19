@@ -19,16 +19,16 @@ class Pairedtag extends Tag
 
         $iter = function ($item, $acc) use (&$iter) {
 
-            var_dump($item->children);
+            $acc .= $item->getName();
             array_reduce($item->children, function ($acc, $el) use (&$acc, &$iter) {
                 if (!empty($el->children)) {
-                    $acc = $iter($el->children, $acc);
+                    $acc = $iter($el, $acc);
                 } else {
                     $acc .= $el->getName();
                 } 
                 return $acc;
             }, '');
-          return $acc; 
+          return $acc . 4; 
         };
         return $iter($this, '');
     }
