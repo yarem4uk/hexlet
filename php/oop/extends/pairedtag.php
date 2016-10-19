@@ -18,17 +18,25 @@ class Pairedtag extends Tag
     {
 
         $iter = function ($item, $acc) use (&$iter) {
-
-            $acc .= $item->getName();
+            
+            if (!empty($item->attributes)) {
+                $atrb = array_reduce(array_keys($item->attributes), function ($str, $atr) use ($item) {
+                   return $str = ' ' . $atr . '=' . '"' . $item->attributes[$atr] . '"';
+                }, '');
+                $acc .= '<' . $item->getName() . $atrb .  '>';
+            } else {
+                $acc .= '<' . $item->getName() . '>';
+            }
+            
             array_reduce($item->children, function ($acc, $el) use (&$acc, &$iter) {
                 if (!empty($el->children)) {
                     $acc = $iter($el, $acc);
                 } else {
-                    $acc .= $el->getName();
+                    $acc .= '<' . $el->getName() . '>' . '<' . $el->getName() . '\>';
                 } 
                 return $acc;
             }, '');
-          return $acc . 4; 
+          return $acc . '<' . $item->getName() . '\>'; 
         };
         return $iter($this, '');
     }
