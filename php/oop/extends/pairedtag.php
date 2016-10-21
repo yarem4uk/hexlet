@@ -32,7 +32,10 @@ class Pairedtag extends Tag
                 if (!empty($el->children)) {
                     $acc = $iter($el, $acc);
                 } else {
-                    $acc .= '<' . $el->getName() . '>' . '<' . $el->getName() . '\>';
+                    $atrb = array_reduce(array_keys($el->attributes), function ($str, $atr) use ($el) {
+                        return $str = ' ' . $atr . '=' . '"' . $el->attributes[$atr] . '"';
+                    }, '');
+                    $acc .= '<' . $el->getName() . $atrb .  '>' . '<' . $el->getName() . '\>';
                 } 
                 return $acc;
             }, '');

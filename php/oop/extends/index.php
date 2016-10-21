@@ -27,7 +27,7 @@ $div3 = new Div(['src' => 'link/to/path'],[$div4, $div4]);
 $div5 = new Div([], [$p, $div3]);
 /* $div4 = new Div(); */
 /* $div3 = new Div([],[$div4]); */
-$div2 = new Div(['class' => 'row'], [$div, $div3, $div5]);
+/* $div2 = new Div(['class' => 'row'], [$div, $div3, $div5]); */
 
 /* echo $div->getName(); */
 echo $div5->toString();
