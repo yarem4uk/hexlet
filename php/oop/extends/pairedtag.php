@@ -29,6 +29,9 @@ class Pairedtag extends Tag
             }
             
             array_reduce($item->children, function ($acc, $el) use (&$acc, &$iter) {
+                if (is_string($el->children)) {
+                    $acc .= $el->getName() . $el->children . $el->getName(); 
+                }
                 if (!empty($el->children)) {
                     $acc = $iter($el, $acc);
                 } else {
