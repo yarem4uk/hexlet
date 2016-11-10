@@ -16,7 +16,6 @@ class Pairedtag extends Tag
     
     public function toString()
     {
-
         $iter = function ($item, $acc) use (&$iter) {
             
             if (!empty($item->attributes)) {
@@ -29,20 +28,26 @@ class Pairedtag extends Tag
             }
             
             array_reduce($item->children, function ($acc, $el) use (&$acc, &$iter) {
-                if (is_string($el->children)) {
-                    $acc .= $el->getName() . $el->children . $el->getName(); 
+                if (is_string($el)) {
+                    $acc .= $el; 
                 }
-                if (!empty($el->children)) {
-                    $acc = $iter($el, $acc);
-                } else {
+                /* elseif (!empty($el->children)) { */
+                    /* echo 'hellow'; */
+                    /* $acc = $el->toString(); */
+                    /* $acc = $iter($el, $acc); */
+                else {
                     $atrb = array_reduce(array_keys($el->attributes), function ($str, $atr) use ($el) {
                         return $str = ' ' . $atr . '=' . '"' . $el->attributes[$atr] . '"';
                     }, '');
-                    $acc .= '<' . $el->getName() . $atrb .  '>' . '<' . $el->getName() . '\>';
+                    if ( $el->getName() !== 'img' ) {
+                        $acc .= '<' . $el->getName() . $atrb .  '>' . '</' . $el->getName() . '>';
+                    } else {
+                        $acc .= '<' . $el->getName() . $atrb .  '>';
+                    }
                 } 
                 return $acc;
             }, '');
-          return $acc . '<' . $item->getName() . '\>'; 
+          return $acc . '</' . $item->getName() . '>'; 
         };
         return $iter($this, '');
     }

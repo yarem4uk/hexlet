@@ -19,8 +19,7 @@ class SinglTag extends Tag
         $str = array_reduce(array_keys($this->attributes), function($acc, $item){
             $acc .= ' ' . $item . '=' . '"' . $this->attributes[$item] . '"';
             return $acc;
-            /* return array_keys($item); */
         }, '');
-        return $result . $str . '/>';
+        return $result . $str . 'ffff>';
     }
 }
