@@ -19,4 +19,11 @@ class User
     {
         return $this->age;
     }
+
+    public function compare($user)
+    {
+        if ($this->getAge() == $user->getAge())
+            return 0;
+        return ($this->getAge() > $user->getAge()) ? 1 : -1;        
+    }
 }
