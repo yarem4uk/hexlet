@@ -6,7 +6,7 @@ class QueryBuilder
 {
     private $selectPart = '*';
     private $tablePart;
-    private $whereParts = [];
+    private $whereParts;
     
     public static function from($table)
     {
@@ -46,10 +46,11 @@ class QueryBuilder
             }, array_keys($this->whereParts), $this->whereParts);
 
             $wheres = implode(' AND ', $whereParts);
-            $selectPart[] = "WHERE $wheres";
+            $sqlParts[] = "WHERE $wheres";
         }
 
         return implode(' ', $sqlParts);
     }
+
 }
 

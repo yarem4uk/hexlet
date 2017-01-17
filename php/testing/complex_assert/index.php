@@ -12,4 +12,4 @@ echo QueryBuilder::from('table')->where('id', 12)->toSql() . PHP_EOL;
 
 /* var_dump($qurey->where('id', 12)); */
 /* $p = $qurey->where('id', 12); */
-/* echo $p->toSql(); */
+/* var_dump($qurey->where('id', 12)); */
