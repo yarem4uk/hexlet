@@ -2,34 +2,33 @@
 
 namespace App;
 
-require_once 'applicationInterface.php';
-
-class Application implements ApplicationInterface
+class Application 
 {
     private $handlers;
 
-    public function get($route, $handler)
+    public function get($route, $handler) 
     {
-        return $this->append('GET', $route, $handler); 
+        return $this->append('GET', $route, $handler);
     }
 
     public function post($route, $handler)
     {
-        return $this->append('POST', $route, $handler); 
+        return $this->append('POST', $route, $handler);
     }
 
     public function run()
     {
-        $uri = $_SERVER['REQUEST_URI'];
+        $uri = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
         $method = $_SERVER['REQUEST_METHOD'];
 
         foreach ($this->handlers as $item) {
             list($handlerMethod, $route, $handler) = $item;
             $preparedRoute = preg_quote($route, '/');
 
-            if ($method == $handlerMethod && preg_match("/^$preparedRoute$/i", $uri)) {
-                echo $handler();
-                return;
+            $matches = [];
+            if ($handlerMethod == $method && preg_match("/^$preparedRoute$/", $uri, $matches)) { 
+                echo $handler($_GET);
+                return;                
             }
         }
     }
@@ -38,4 +37,5 @@ class Application implements ApplicationInterface
     {
         return $this->handlers[] = [$method, $route, $handler];
     }
-} 
+
+}
