@@ -34,6 +34,11 @@ $app->get('/', function ($get) use ($data) {
     return;
 });
 
+/* $app->get('/', function ($get) { */
+/*    print_r($get); */    
+/*    return; */
+/* }); */
+
 $app->run();
 
     
