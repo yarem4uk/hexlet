@@ -1,4 +1,4 @@
-<?nphp
+<?php
 
 namespace App;
 
@@ -6,44 +6,46 @@ class Application
 {
     private $handlers = [];
 
-    public function get($route, $handler) 
+    public function get($route, $handler)
     {
-        return $this->append('GET', $route, $handler);
+        $this->append('GET', $route, $handler);
     }
 
     public function post($route, $handler)
     {
-        return $this->append('POST', $route, $handler);
+        $this->append('POST', $route, $handler);
     }
-
+    
     public function run()
     {
         $uri = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
         $method = $_SERVER['REQUEST_METHOD'];
-
         foreach ($this->handlers as $item) {
             list($handlerMethod, $route, $handler) = $item;
             $preparedRoute = str_replace('/', '\/', $route);
-
             $matches = [];
-            if ($handlerMethod == $method && preg_match("/^$preparedRoute$/", $uri, $matches)) { 
-
+            if ($method == $handlerMethod && preg_match("/^$preparedRoute$/i", $uri, $matches)) {
                 $arguments = array_filter($matches, function ($key) {
                     return !is_numeric($key);
-                },ARRAY_FILTER_USE_KEY);
+                }, ARRAY_FILTER_USE_KEY);
 
                 $meta = [
                     'method' => $method,
                     'uri' => $uri,
                     'headers' => getallheaders()
                 ];
-
+                
                 $response = $handler($meta, array_merge($_GET, $_POST), $arguments);
-
+                http_response_code($response->getStatusCode());
+                foreach ($response->getHeaderLines() as $header) {
+                    header($header);
+                }
+                echo $response->getBody();
                 return;
             }
         }
     }
+
 
     private function append($method, $route, $handler)
     {
@@ -57,5 +59,4 @@ class Application
 
         return $this->handlers[] = [$method, $newRoute, $handler];
     }
-
 }

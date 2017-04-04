@@ -19,3 +19,7 @@ $arr = array_map(function ($key, $value) {
 $result = array_reduce($array, function ($acc, $item) {
     return $item ** 2;
 }, []);
+
+foreach ($array as $key => $value) {
+    $newArray[] = [$key => $value];
+}

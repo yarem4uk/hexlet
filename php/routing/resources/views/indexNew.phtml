@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title></title>
+  </head>
+  <body>
+    <h1>Cars</h1>
+    <div><a class="new-car" href="/cars/new">add new car</a></div>
+    <br>
+    <table border="1" style="border-collapse: collapse;" >
+      <tr>
+        <td>id</td>
+        <td>Model</td>
+        <td>Picture</td>
+      </tr>
+
+      <?php foreach ($cars as $car) : ?>
+        <tr class="tr">
+          <td><?= $car['id'] ?></td>
+          <td><?= $car['model'] ?></td>
+          <td>
+            <?php foreach ( $car['pictures'] as $picture) : ?> 
+              <img src="images/<?= $picture['name'] ?>" width="100px">
+            <?php endforeach ?>
+          </td>
+        </tr>
+      <?php endforeach ?>
+    </table>
+  </body>
+</html> 

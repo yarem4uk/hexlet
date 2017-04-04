@@ -3,11 +3,12 @@
 namespace App;
 
 require_once 'application.php';
-require_once 'renderer/renderer.php';
+require_once 'src/renderer.php';
 require_once 'response.php';
 
-use function App\response;
 use function App\Renderer\render;
+use function App\response;
+
 
 $users = [
     1 => [
@@ -29,6 +30,7 @@ $app->post('/users', function ($meta, $params, $arguments) {
     return response()->redirect('/');
 });
 
+
 $app->get('/users/:id/friends', function ($meta, $params, $arguments) use ($users) {
     if (!isset($users[$arguments['id']])) {
         return response(['error' => 'message not found'])->withStatus(404)->format('json');
@@ -36,3 +38,5 @@ $app->get('/users/:id/friends', function ($meta, $params, $arguments) use ($user
     $response = response($users[$arguments['id']])->format('json');
     return $response;
 });
+
+$app->run();
