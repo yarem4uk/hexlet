@@ -1,7 +1,11 @@
-import car from './my-points';
-// import { cons, car, cdr } from './my-points';
+import { makePoint, getX, getY } from './my-points';
 
-// const pair = cons(2, 4);
+const point = makePoint(1, 4);
 
-// console.log(cdr(pair));
-console.log(car);
+console.log(getY(point));
+
+const symmetricalPoint = (point) => {
+    makePoint(-getX(point), -getY(point));
+};
+
+console.log(getY(symmetricalPoint));

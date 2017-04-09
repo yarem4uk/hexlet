@@ -1,12 +1,6 @@
-// export const cons = (a, b) => (message) => {
-//     switch (message) {
-//         case 'car':
-//             return a;
-//         case 'cdr':
-//             return b;
-//     }
-// };
+import { cons, car, cdr } from './my-pairs';
 
-// export const car = (pair) => pair('car');
-// export const cdr = (pair) => pair('cdr');
-export const car = 'hellow';
+export const makePoint = (x, y) => cons(x, y);
+
+export const getX = (point) => car(point);
+export const getY = (point) => cdr(point);
