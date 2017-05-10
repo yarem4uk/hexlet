@@ -1,25 +1,29 @@
 import { l, isList, isEmpty, head, tail, append } from 'hexlet-pairs-data';
-import { is, toString, hasChildren, children, filter, reduce, value } from 'hexlet-html-tags';
+import { is, hasChildren, children, filter, reduce, value, toString } from 'hexlet-html-tags';
 
-const tree = l(l(1, 2), l(3, l(4, 5)), 6);
-
-export const countElements = (tree) => {
-    if (!isList(tree)) {
+export const countElements = (list) => {
+    if (!isList(list)) {
         return 1;
-    }
-    if (isEmpty(tree)) {
+    } else if (isEmpty(list)) {
         return 0;
     }
-
-    return countElements(head(tree)) + countElements(tail(tree));
+    return countElements(children(head(list)) + countElements(tail(list)));
 };
 
-export const select = (tag, dom) => {
-    if (is(tag, dom)) {
-        return 1;
+export const select = (query, dom) => {
+    if (isEmpty(query)) {
+        return dom;
     }
-    if (isEmpty(dom)) {
-        return 0;
-    }
-    return select(tag, head(dom)) + select(tag, tail(dom));
+    const tag = head(query);
+    const newDom = reduce((item, acc) => {
+        if (is(tag, item)) {
+            const childrens = hasChildren(item) ? children(item) : l();
+            const elements = isEmpty(tail(query)) ? l(item) : childrens;
+            return append(elements, acc);
+        } else if (hasChildren(item)) {
+            return append(select(query, children(item)), acc);
+        }
+        return acc;
+    }, l(), dom);
+    return select(tail(query), newDom);
 };
