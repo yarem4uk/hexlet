@@ -22,7 +22,7 @@ const run = (player1, player2, cards, customRandom) => {
             damage = simpleCard.damage(card);
         } else if (isPercentCard(card)) {
             cardName = percentCard.getName(card);
-            damage = percentCard.damage(card);
+            damage = percentCard.damage(card, health);
         }
         const newHealth = health2 - damage;
 
