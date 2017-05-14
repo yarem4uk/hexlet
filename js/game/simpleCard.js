@@ -1,9 +1,12 @@
-import { cons, car, cdr } from 'hexlet-pairs';
-import { attach, contents } from './type';
+import { cons, car, cdr, toString } from 'hexlet-pairs';
+import { definer } from './generic';
+import { attach } from './type';
+
+const defmethod = definer('SimpleCard');
 
 export const make = (name, simple) => 
     attach('SimpleCard', cons(name, simple));
 
-export const getName = (self) => car(contents(self));
+defmethod('getName', self => car(self));
 
-export const damage = (self) => cdr(contents(self));
+defmethod('damage', self => cdr(self));

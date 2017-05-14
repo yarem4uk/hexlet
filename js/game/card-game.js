@@ -1,8 +1,9 @@
 import { car, cdr, cons, toString } from 'hexlet-pairs';
 import { cons as consList, l, random, head, reverse } from 'hexlet-pairs-data';
-import * as simpleCard from './simpleCard.js';
-import * as percentCard from './percentCard.js';
-import { typeTag } from './type.js';
+import { getName, damage } from './card';
+// import * as simpleCard from './simpleCard.js';
+// import * as percentCard from './percentCard.js';
+// import { typeTag } from './type.js';
 
 const isSimpleCard = (card) => typeTag(card) === 'SimpleCard';
 const isPercentCard = (card) => typeTag(card) === 'PercentCard';
@@ -14,17 +15,9 @@ const run = (player1, player2, cards, customRandom) => {
         }
 
         const card = customRandom(cards);
-        let cardName;
-        let damage;
-
-        if (isSimpleCard(card)) {
-            cardName = simpleCard.getName(card);
-            damage = simpleCard.damage(card);
-        } else if (isPercentCard(card)) {
-            cardName = percentCard.getName(card);
-            damage = percentCard.damage(card, health);
-        }
-        const newHealth = health2 - damage;
+        const cardName = getName(card);
+        const points = damage(card, health2);
+        const newHealth = health2 - points;
 
         const message = `Игрок '${name1}' применил '${cardName}' против '${name2}' и нанес урон '${damage}'`;
 

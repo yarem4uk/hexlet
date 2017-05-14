@@ -1,10 +1,13 @@
-import { cons, car, cdr } from 'hexlet-pairs';
-import { attach, contents } from './type';
+import { cons, car, cdr, toString } from 'hexlet-pairs';
+import { definer } from './generic';
+import { attach } from './type';
 
-export const make = (name, simple) => 
-    attach('PercentCard', cons(name, simple));
+const defmethod = definer('PercentCard');
 
-export const getName = (self) => car(contents(self));
+export const make = (name, percent) => 
+    attach('PercentCard', cons(name, percent));
 
-export const damage = (self, health) => 
-    Math.round(health * cdr(contents(self)) / 100);
+defmethod('getName', self => car(self));
+
+defmethod('damage', (self, health) =>
+    Math.round(health * (cdr(self) / 100)));
