@@ -27,6 +27,7 @@ const run = (player1, player2, cards, customRandom) => {
         } else if (order === 2) {
             stats = cons(cons(newHealth, health1), message);
         }
+
         const newLog = consList(stats, log);
         return iter(newHealth, name2, health1, name1, order === 1 ? 2 : 1, newLog);
     };
