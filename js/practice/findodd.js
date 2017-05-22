@@ -4,26 +4,13 @@ const findodd = (arr) => {
     const map = arr.reduce((acc, item) => 
         acc.has(item) ? acc.set(item, acc.get(item) + 1) : acc.set(item, 1),
         new Map());
-    console.log(map);
-    const num = map.forEach((v, k) => {
-        let n;
+    let i;
+    map.forEach((v, k) => {
         if (v % 2 !== 0) {
-            n = v;
-        } 
-       return n; 
+            i = k;
+        }
     });
-    return num;
-};
+    return i;
+}
 
 console.log(findodd(numbers));
-
-// const map = new Map();
-// map.set('hellow', 1);
-// map.set('bay', 2);
-// map.set('alena', 5);
-// map.set('sasha', 4);
-// map.forEach((k, v) => {
-//     if (k % 2 !== 0) {
-//         return console.log(v);
-//     }
-// });
