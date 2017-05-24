@@ -8,7 +8,9 @@ class Enumerable {
         const newOpr = this.operations.slice();
         Args.map(item => {
             if (typeof item === 'function') {
-                newOpr.push(coll => coll.filter(fn));
+                newOpr.push(coll => coll.filter(item));
+            } else {
+                newOpr.push(coll => coll.filter((obj) => Object.keys(item).every((fild => obj[fild] === item[fild]))));
             }
         });
         return new Enumerable(this.collection, newOpr);
@@ -47,6 +49,7 @@ class Enumerable {
                 return item(acc);
             }, this.collection);
         }
+        console.log(this.operations);
         return this.memo;
     }
 }
