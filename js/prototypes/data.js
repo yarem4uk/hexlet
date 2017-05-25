@@ -11,10 +11,13 @@
 //   ]],
 // ]];
 
-const data = [['html'], ['meta'], ['body']];
-// const data = ['html', 'meta', 'body'];
+const data = ['html', [['span'], ['meta'], ['body']]];
+// const data = ['html'];
+// const data = ['html', [['span']]];
 // const data = ['html', [['meta'], ['body', ['div']]]];
-
+// const data = ['h1', { class: 'container', href: 'https//hexlet.io' }, [['span', { class: 'link', href: 'http//superoffice.ua' }, 'anotherlink'], ['div']]];
+// const data = ['h1', { class: 'container', href: 'https//hexlet.io' }];
+// const data = ['h1', 'html builder example'] ;
 // const data = [
 //     'html', [
 //         ['meta', [
