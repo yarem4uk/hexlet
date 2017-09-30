@@ -5,7 +5,10 @@
   "main": "help.js",
   "dependencies": {
     "babel-preset-es2015": "^6.24.0",
-    "hexlet-html-tags": "^0.2.3"
+    "hexlet-fs": "^0.3.0",
+    "hexlet-html-tags": "^0.2.3",
+    "hexlet-trees": "^0.5.2",
+    "source-map-support": "^0.4.15"
   },
   "devDependencies": {
     "babel-plugin-transform-object-rest-spread": "^6.23.0"
