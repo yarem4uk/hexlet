@@ -4,7 +4,8 @@
   "description": "",
   "main": "help.js",
   "dependencies": {
-    "babel-preset-es2015": "^6.24.0",
+    "babel-preset-env": "^1.6.1",
+    "babel-preset-stage-0": "^6.24.1",
     "hexlet-fs": "^0.3.0",
     "hexlet-html-tags": "^0.2.3",
     "hexlet-trees": "^0.5.2",
