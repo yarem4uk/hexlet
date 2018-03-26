@@ -1,13 +1,13 @@
 const subString = (str) => {
-    const iter = (i, acc) => {
-        if (i < 0) {
-            return acc;
-        }
-        acc +=str[i];
-        i--;
-        return iter(i, acc);
-    };
-    return iter(str.length -1, '');
+  const iter = (i, acc) => {
+    if (i < 0) {
+      return acc;
+    }
+    acc += str[i];
+    i--;
+    return iter(i, acc);
+  };
+  return iter(str.length - 1, '');
 };
 
 

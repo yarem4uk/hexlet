@@ -12,11 +12,11 @@
 
 const map = (f, obj) => {
   const { type, children } = obj;
-    if (type === 'file') {
-      const newObj = f(obj);
-      return newObj;
-    }
-  return {...newObj, children: children.map(item => map(f, item))};
+  if (type === 'file') {
+    const newObj = f(obj);
+    return newObj;
+  }
+  return { ...newObj, children: children.map(item => map(f, item)) };
 };
 
-map(v => ({...v, name: v.name.toLowerCase() }), obj);
+map(v => ({ ...v, name: v.name.toLowerCase() }), obj);

@@ -1,11 +1,11 @@
 import { tree, obj } from './data';
 
-// const reduce = (f, tree, acc) => {
+// export const reduce = (f, tree, acc) => {
 //   const [name, children] = tree;
 //   const newAcc = f(acc, tree);
 //   if (!children) {
 //     return newAcc;
-//   } 
+//   }
 //   return children.reduce((iAcc, i) => reduce(f, i, iAcc), newAcc);
 // };
 
@@ -19,4 +19,3 @@ const reduce = (f, obj, acc) => {
   } 
   return children.reduce((iAcc, i) => reduce(f, i, iAcc), newAcc);
 };
-

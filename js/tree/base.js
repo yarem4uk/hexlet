@@ -1,5 +1,5 @@
 import { tree, obj } from './data';
-//
+// 
 // base algorytm
 //
 //const dfs = (tree) => {
