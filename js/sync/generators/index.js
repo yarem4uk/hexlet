@@ -1,10 +1,8 @@
 import Seq from './seq';
 
-const obj = new Seq(1, x => x + 1);
+const seq = new Seq(1, x => x + 2, 9);
 
-// console.log(obj.getThis(), 'from this.obj');
-// console.log(obj.next(), 'from this.next');
-obj.next();
-// for (const v of obj.next()) {
-//   console.log(v, 'from for');
-// }
+// for (const v of seq) {
+for (const v of seq.skip(4).take(2)) {
+  console.log(v);
+}

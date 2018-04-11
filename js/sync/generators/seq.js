@@ -1,37 +1,34 @@
-// import 'babel-polyfill';
-
 export default class Seq {
   constructor(start, fn, col) {
     this.start = start;
     this.fn = fn;
-    this.col = col;
+    this.col = col || Infinity;
 
-    this.collection = function* (s, f, c) {
+    this.generator = function* (s, f, c) {
       if (c === 0) {
         return;
       }
       yield s;
-      yield* this.collection(f(s), f, c - 1);
+      yield* this.generator(f(s), f, c - 1);
     };
 
     this[Symbol.iterator] = function* () {
-      yield* this.collection;
+      yield* this.generator(this.start, this.fn, this.col);
     };
-
   }
 
-  getThis() {
-    console.log(this);
+  jamp(x, j) {
+    if (x === 0) {
+      return j;
+    }
+    return this.jamp(x - 1, this.fn(j));
   }
 
-  next() {
-    const it = this.collection(this.start, this.fn, this.col);
-    console.log(it.next());
-    // for (const v of it) {
-      // console.log(v, 'from method next');
-    // }
+  skip(n) {
+    return new Seq(this.jamp(n, this.start), this.fn, this.coll);
   }
-  take(n) {
-    
+
+  take(m) {
+    return new Seq(this.start, this.fn, m);
   }
 }
