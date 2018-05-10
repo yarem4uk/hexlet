@@ -1,0 +1,25 @@
+extends ../layouts/app.pug
+block content
+  div
+    a(href='/') Main page
+  // BEGIN (write your solution here)
+  table
+    tr
+      th MY Posts
+    tr
+      td index
+      td title
+      td body
+    // for post in posts
+      tr
+        td=post.id
+        td
+          div=post.title
+        td
+          div=post.body
+        td
+          div
+            // a(href='/posts/'+post.id, style={ 'text-decoration': 'none' }) read more...
+  // div
+    // a(href='posts/new', style= { 'text-decoration': 'none' }) Add new post
+  // END

@@ -10,6 +10,7 @@ export default (registrationFormUrl, submitFormUrl, nickname, callback) => {
       callback(new Error(`status code: ${res.statusCode}`));
       return;
     }
+
     const body = [];
     res.on('data', (chunk) => {
       body.push(chunk.toString());

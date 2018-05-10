@@ -1,0 +1,24 @@
+extends ../layouts/app.pug
+
+block content
+  .container
+    table.table.table-striped
+      thead
+        tr
+          th(scope='col') id
+          th(scope='col') title
+          th(scope='col') body
+          th(scope='col') edit links
+          th(scope='col') delete links
+      tbody
+        for post in posts
+          tr
+            th(scope='row')=post.id
+            td
+              a(href=`/posts/${post.id}`)=post.title
+            td=post.body
+            td
+              a(href=`/posts/${post.id}/edit`) edit this post
+            td
+              form(method='POST', action=`/posts/${post.id}/?_method=DELETE`)
+                button.btn.btn.success(type='submit') delete this post

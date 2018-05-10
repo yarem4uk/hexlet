@@ -1,0 +1,14 @@
+extends ../layouts/app.pug
+
+block content
+  h2 Add your post
+  br
+  form(method='POST', action='/posts')
+    lable Title:
+    input(name='title', type='text')=from.title
+    br
+    lable Body:
+    textarea(name='body')=form.body
+    br
+    input(type='submit', value='add')
+

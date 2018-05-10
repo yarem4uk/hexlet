@@ -1,0 +1,9 @@
+extends ../layouts/app.pug
+
+block content
+  .continer
+    .row
+      .col-2
+      .col-8
+        form(method="POST", action='/posts')
+          include _form.pug

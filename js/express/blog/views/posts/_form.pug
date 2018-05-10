@@ -1,0 +1,15 @@
+if Object.keys(errors).length > 0
+  .alert.alert-warning
+    for key in Object.keys(errors)
+      div= errors[key]
+.row.form-group
+  .col-sm
+    label.col-form-label Title
+    input.form-control(name='title' type='text', placeholder='title', value=form.title)
+.row.form-group
+  .col-sm
+    label.col-form-label Body
+    textarea.form-control(rows=10, name='body')=form.body
+.form-gropu
+  button.btn.btn-success(type='submit') Add post
+.col-2

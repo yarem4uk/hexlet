@@ -1,6 +1,6 @@
-import fs from 'fs';
-// import http from 'https';
-import http from 'http';
+// import fs from 'fs';
+import http from 'https';
+// import http from 'http';
 import url from 'url';
 import querystring from 'querystring';
 
@@ -14,9 +14,12 @@ const getSearch = (queryParams, params) => {
 };
 
 export default (obj) => {
+  // console.log(obj);
   const { method, data, params } = obj;
   const { hostname, pathname, query } = url.parse(obj.url, true);
+  // console.log(hostname);
   const postData = querystring.stringify(data);
+  // console.log(postData);
   let postHeaders = {};
   if (method === 'POST') {
     postHeaders = {
@@ -30,12 +33,12 @@ export default (obj) => {
     method,
     headers: postHeaders,
     // headers: {
-    //   'Content-Type': 'application/x-www-form-urlencoded',
-    //   'Content-Length': Buffer.byteLength(postData),
+      // 'Content-Type': 'application/x-www-form-urlencoded',
+      // 'Content-Length': Buffer.byteLength(postData),
     // },
   };
-  console.log(options.hostname, '...hostname from options');
-  console.log(options.path, '...path from options');
+  // console.log(options.hostname, '...hostname from options');
+  // console.log(options.path, '...path from options');
   return new Promise((resolve, reject) => {
     const req = http.request(options, (res) => {
       const body = [];

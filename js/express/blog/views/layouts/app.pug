@@ -1,0 +1,15 @@
+doctype html
+html
+  head
+    title Local HexletExercise
+    link(rel='stylesheet' href='/assets/bootstrap/dist/css/bootstrap.css')
+  body
+    nav.navbar.navbar-dark.bg-dark.mb-2
+      a.navbar-brand(href="/") HexletBlogs
+      .container.mx-auto
+        ul.navbar.navbar-nav.flex-row
+          li.nav-item
+            a.nav-link(href="/posts/new") Write Post
+          li.nav-item.mx-3
+            a.nav-link(href="/posts") My Posts
+    block content

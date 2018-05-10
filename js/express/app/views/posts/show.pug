@@ -1,0 +1,6 @@
+extends ../layouts/app.pug
+
+block content
+    h2= post.title
+    p= post.body
+    a(href='/posts', style={ 'text-decoration': 'none' }) list of posts
