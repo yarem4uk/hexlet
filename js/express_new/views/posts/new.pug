@@ -1,0 +1,17 @@
+extends ../layouts/app.pug
+
+block content
+  .container
+    h2 Add new post
+    form(method='post', action='/posts')
+      .form-group
+      label.col-form-label Title:
+      input.form-control(name='title', type='text', placeholder='enter title', value=form.title)
+      if errors.title
+        p= errors.title
+      label.col-form-label Boby:
+      textarea.form-control(name='body')=form.body
+      if errors.body
+        p= errors.body
+      .form-group
+      button.btn.btn-success(type='sumbit') Add post

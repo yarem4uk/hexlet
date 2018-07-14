@@ -1,0 +1,15 @@
+doctype html
+html
+  head
+    title my first blog
+    link(rel='stylesheet' href='/assets/bootstrap/dist/css/bootstrap.css')
+  body
+    nav.navbar.navbar-dark.bg-dark
+      a.navbar-brand(href="/") HexletBlogs
+      .container.mx-auto.inline
+        ul.nav.navbar-nav.ml-auto
+          li.nav-item
+            a.nav-link(href="/posts/new") Write Post
+          li.nav-item
+            a.nav-link(href="/posts") My Posts
+    block content

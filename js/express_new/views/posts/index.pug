@@ -1,0 +1,20 @@
+extends ../layouts/app.pug
+block content
+  div.container
+    a(href='/') Main page
+
+    // table.table.table-striped
+    table.table
+      thead.thead-dark
+        tr
+          th(scope='col') id
+          th(scope='col') title
+          th(scope='col') body
+      tbody
+        for post in posts
+          tr
+            th=post.id
+            td=post.title
+            td
+              a(href=`/posts/${post.id}`)=post.body
+    a(href='/posts/new') add new post

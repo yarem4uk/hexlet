@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Flexbox</title>
+    <link rel="stylesheet" href="style/style.css">
+    <link rel="stylesheet" href="style/flex.css">
+  </head>
+  <body>
+    <div class="wrapper">
+      <h1><span>flexbox</span></h1>
+      <ul class="flex-cont">
+        <li class="flex-elem">elem-1</li>
+        <li class="flex-elem">elem-2</li>
+        <li class="flex-elem">elem-3</li>
+        <li class="flex-elem"><div>
+  Dolor odio nemo quisquam est pariatur Quo harum veniam minus quo quibusdam ad. Debitis earum minima labore error saepe? Nihil omnis quas molestiae possimus fugiat? Animi consectetur commodi sapiente explicabo facere. Laboriosam architecto quod officiis dignissimos recusandae assumenda quas at.
+</div>
+</li>
+        <li class="flex-elem">elem-5</li>
+        <li class="flex-elem">elem-6</li>
+      </ul>
+    </div>
+  </body>
+</html>
